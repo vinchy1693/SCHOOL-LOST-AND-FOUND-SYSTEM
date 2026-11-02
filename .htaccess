@@ -1,0 +1,12 @@
+# This project is served by Next.js at http://localhost:3000 (`npm start`).
+# Apache must not serve this directory: it contains source code, .env.local and
+# uploaded files. Deny direct access and send visitors to the Next.js server.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+
+ErrorDocument 403 http://localhost:3000/
